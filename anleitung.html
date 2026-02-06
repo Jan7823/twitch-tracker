@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download & Upload Anleitung - Twitch Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.1));
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-box h2 {
+            color: #a855f7;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box .file-name {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #22c55e;
+            font-family: monospace;
+        }
+        
+        .highlight-box p {
+            color: #94a3b8;
+            margin-top: 15px;
+        }
+        
+        .step {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            color: #f1f5f9;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        
+        .step ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .step li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .step li:last-child {
+            border-bottom: none;
+        }
+        
+        .step li::before {
+            content: "→";
+            position: absolute;
+            left: 10px;
+            color: #a855f7;
+            font-weight: bold;
+        }
+        
+        .step code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 3px 10px;
+            border-radius: 6px;
+            color: #22c55e;
+            font-family: monospace;
+        }
+        
+        .step .note {
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #fbbf24;
+        }
+        
+        .step .success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #22c55e;
+        }
+        
+        .url-example {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px dashed rgba(168, 85, 247, 0.5);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .url-example code {
+            font-size: 1.3rem;
+            color: #22c55e;
+            background: none;
+        }
+        
+        .keyboard {
+            display: inline-block;
+            background: #374151;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 0 #1f2937;
+        }
+        
+        .checklist {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            color: #22c55e;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            margin-top: 40px;
+        }
+        
+        footer span {
+            color: #a855f7;
+        }
+
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #f87171;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .highlight-box .file-name {
+                font-size: 2rem;
+            }
+            
+            .step {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Twitch Tracker Anleitung</h1>
+        <p class="subtitle">Download & Upload auf GitHub Pages</p>
+        
+        <div class="highlight-box">
+            <h2>📥 Du brauchst nur EINE Datei:</h2>
+            <div class="file-name">index.html</div>
+            <p>Diese Datei enthält alles: Design, Funktionen und Diagramme!</p>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>🔽 Datei herunterladen</h3>
+            <ul>
+                <li>Klicke oben auf <strong>"Preview"</strong> oder <strong>"Open in new tab"</strong></li>
+                <li>Wenn die Seite geladen ist, drücke <span class="keyboard">STRG</span> + <span class="keyboard">S</span></li>
+                <li>Mac-User: <span class="keyboard">CMD</span> + <span class="keyboard">S</span></li>
+                <li>Speichere als <code>index.html</code> auf deinem Desktop</li>
+            </ul>
+            <div class="note">
+                💡 <strong>Alternative:</strong> Rechtsklick → "Seite speichern unter..." → als index.html speichern
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>🌐 GitHub Account erstellen</h3>
+            <ul>
+                <li>Öffne <code>github.com</code> in deinem Browser</li>
+                <li>Klicke oben rechts auf <strong>"Sign up"</strong></li>
+                <li>Gib deine E-Mail-Adresse ein</li>
+                <li>Erstelle ein Passwort</li>
+                <li>Wähle einen Benutzernamen</li>
+                <li>Bestätige deine E-Mail-Adresse</li>
+            </ul>
+            <div class="note">
+                💡 Falls du schon einen Account hast, logge dich einfach ein!
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>📦 Neues Repository erstellen</h3>
+            <ul>
+                <li>Gehe zu <code>github.com/new</code></li>
+                <li>Bei <strong>"Repository name"</strong>: <code>twitch-tracker</code></li>
+                <li>Wähle <strong>"Public"</strong> ✅</li>
+                <li><strong>NICHT</strong> ankreuzen: "Add a README file" ❌</li>
+                <li><strong>NICHT</strong> ankreuzen: "Add .gitignore" ❌</li>
+                <li>Klicke auf <strong>"Create repository"</strong></li>
+            </ul>
+            <div class="warning">
+                ⚠️ <strong>Wichtig:</strong> Das Repository MUSS "Public" sein, sonst funktioniert GitHub Pages nicht!
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>📤 Datei hochladen</h3>
+            <ul>
+                <li>Auf der neuen Seite: Klicke auf <strong>"uploading an existing file"</strong></li>
+                <li><strong>Drag & Drop:</strong> Ziehe deine <code>index.html</code> ins Fenster</li>
+                <li>Oder klicke auf <strong>"choose your files"</strong></li>
+                <li>Warte bis der grüne Haken erscheint ✓</li>
+                <li>Scrolle runter und klicke <strong>"Commit changes"</strong></li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>⚙️ GitHub Pages aktivieren</h3>
+            <ul>
+                <li>Klicke oben auf <strong>"Settings"</strong> (Zahnrad-Symbol)</li>
+                <li>Links im Menü: Klicke auf <strong>"Pages"</strong></li>
+                <li>Bei <strong>"Branch"</strong>: Wähle <strong>"main"</strong></li>
+                <li>Klicke auf <strong>"Save"</strong></li>
+                <li>⏳ <strong>Warte 1-2 Minuten</strong></li>
+                <li>Lade die Seite neu (F5)</li>
+            </ul>
+            <div class="success">
+                🎉 <strong>Fertig!</strong> Oben erscheint jetzt deine URL!
+            </div>
+        </div>
+        
+        <div class="url-example">
+            <p style="margin-bottom: 10px; color: #94a3b8;">Deine Webseite ist dann erreichbar unter:</p>
+            <code>https://DEIN-USERNAME.github.io/twitch-tracker/</code>
+        </div>
+        
+        <div class="checklist">
+            <h3>✅ Checkliste - Hast du alles?</h3>
+            <ul>
+                <li><code>index.html</code> heruntergeladen</li>
+                <li>GitHub Account erstellt/eingeloggt</li>
+                <li>Repository "twitch-tracker" erstellt (Public!)</li>
+                <li>Datei hochgeladen und committed</li>
+                <li>GitHub Pages aktiviert (Settings → Pages → main)</li>
+                <li>1-2 Minuten gewartet</li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">?</div>
+            <h3>❓ Häufige Probleme</h3>
+            <ul>
+                <li><strong>"404 Not Found"</strong> → Datei muss genau <code>index.html</code> heißen!</li>
+                <li><strong>"Seite lädt nicht"</strong> → Warte 2-3 Minuten, leere den Cache mit <span class="keyboard">STRG</span>+<span class="keyboard">SHIFT</span>+<span class="keyboard">R</span></li>
+                <li><strong>"Nur weiße Seite"</strong> → Prüfe ob die komplette Datei hochgeladen wurde</li>
+                <li><strong>"Pages nicht verfügbar"</strong> → Repository muss auf "Public" stehen!</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p><span>gecoded von socken</span> 🧦</p>
+            <p style="margin-top: 10px;">Twitch Tracker für Letshugotv</p>
+        </footer>
+    </div>
+</body>
+</html>
