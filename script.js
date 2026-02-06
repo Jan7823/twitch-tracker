@@ -10,8 +10,8 @@
 const CONFIG = {
     // Twitch API Credentials
     twitch: {
-        clientId: 'axjp2ypwvmk4zecs43hvodw8y98lq9',  // Zeile 12: Trage hier deine Twitch Client ID ein
-        clientSecret: 'vo7exvsop5hbux8py88aoqy0ub0d7j',  // Zeile 13: Trage hier dein Twitch Client Secret ein
+        clientId: 'axjp2ypwvmk4zecs43hvodw8y98lq9';  // Zeile 12: Trage hier deine Twitch Client ID ein
+        clientSecret: 'vo7exvsop5hbux8py88aoqy0ub0d7j';  // Zeile 13: Trage hier dein Twitch Client Secret ein
         channelName: 'letshugotv'                 // Der Twitch-Kanal, der getrackt werden soll
     },
     
