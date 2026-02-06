@@ -13,7 +13,7 @@ const CONFIG = {
     clientId: 'axjp2ypwvmk4zecs43hvodw8y981q9', // Komma ist hier optional, aber gut
     clientSecret: 'vo7exvsop5hbux8py88aoqy0ub0d7j', // HIER war der Fehler (jetzt mit Komma)
     channelName: 'letshugotv' // Letzter Eintrag braucht kein Zeichen
-};
+},
     
     // Firebase Configuration
     firebase: {
@@ -24,8 +24,8 @@ const CONFIG = {
   storageBucket: "letshugo-tracker-1dd90.firebasestorage.app",
   messagingSenderId: "417153511653",
   appId: "1:417153511653:web:9e4d999294e1359153a40c"
-};
 
+};
     // Update Interval (3 Minuten in Millisekunden)
     updateInterval: 3 * 60 * 1000, // 180000 ms = 3 Minuten
     
