@@ -24,7 +24,7 @@ const CONFIG = {
   storageBucket: "letshugo-tracker-1dd90.firebasestorage.app",
   messagingSenderId: "417153511653",
   appId: "1:417153511653:web:9e4d999294e1359153a40c"
-
+}
 };
     // Update Interval (3 Minuten in Millisekunden)
     updateInterval: 3 * 60 * 1000, // 180000 ms = 3 Minuten
