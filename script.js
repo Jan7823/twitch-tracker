@@ -13,7 +13,6 @@ const CONFIG = {
     clientId: 'axjp2ypwvmk4zecs43hvodw8y981q9', // Komma ist hier optional, aber gut
     clientSecret: 'vo7exvsop5hbux8py88aoqy0ub0d7j', // HIER war der Fehler (jetzt mit Komma)
     channelName: 'letshugotv' // Letzter Eintrag braucht kein Zeichen
-  },
 };
     
     // Firebase Configuration
